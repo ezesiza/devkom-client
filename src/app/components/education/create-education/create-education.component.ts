@@ -3,7 +3,6 @@ import { NgForm } from '@angular/forms';
 import { Store } from '@ngrx/store';
 
 import { Router } from '@angular/router';
-import * as authReducer from 'src/app/reducers/authReducer';
 import { EducationService } from '../education.service';
 import { EducationData } from '../education.model';
 
@@ -19,7 +18,6 @@ export class CreateEducationComponent implements OnInit {
   private mode = 'create';
 
   constructor(
-    private store: Store<authReducer.AuthState>,
     public educationService: EducationService,
     private router: Router
   ) {}

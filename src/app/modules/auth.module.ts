@@ -5,10 +5,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { LoginComponent } from '../components/auth/login/login.component';
 import { RegisterComponent } from '../components/auth/register/register.component';
-import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { reducer as authReducer } from './../reducers/authReducer';
-import { AuthEffects } from '../components/auth/auth.effect';
 
 const auth = [LoginComponent, RegisterComponent];
 
@@ -16,8 +13,6 @@ const auth = [LoginComponent, RegisterComponent];
   declarations: [LoginComponent, RegisterComponent],
   imports: [
     CommonModule,
-    StoreModule.forFeature('auth', authReducer),
-    EffectsModule.forFeature([AuthEffects]),
     RouterModule,
     MaterialModule,
     ReactiveFormsModule,
