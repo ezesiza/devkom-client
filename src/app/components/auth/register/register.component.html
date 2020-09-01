@@ -1,0 +1,40 @@
+<br>
+<mat-card>
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
+    <form (submit)="onSignup(signupForm)" #signupForm="ngForm" *ngIf="!isLoading">
+        <mat-form-field>
+            <input matInput name="firstName" ngModel type="text" placeholder="Firstname" #firstNameInput="ngModel" required firstName>
+            <mat-error *ngIf="firstNameInput.invalid">Please enter First Name</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput name="lastName" ngModel type="text" placeholder="lastname" #lastNameInput="ngModel" required lastName>
+            <mat-error *ngIf="lastNameInput.invalid">Please enter Last Name</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput name="email" ngModel type="email" placeholder="E-Mail" #emailInput="ngModel" required email>
+            <mat-error *ngIf="emailInput.invalid">Please enter a valid email</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input type="password" ngModel name="password" matInput placeholder="Password" #passwordInput="ngModel" required password>
+            <mat-error *ngIf="passwordInput.invalid">Please verify it matches password</mat-error>
+        </mat-form-field>
+        <!-- <mat-form-field>
+      <input type="password" ngModel name="password2" matInput placeholder="Password2" #passwordInput="ngModel" required
+        password>
+      <mat-error *ngIf="passwordInput.invalid">Please verify it matches password</mat-error>
+    </mat-form-field> -->
+        <mat-form-field>
+            <input type="avatar" ngModel name="avatar" matInput placeholder="avatar" #passwordInput="ngModel" required password>
+            <mat-error *ngIf="passwordInput.invalid">Indicate avatar</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input type="date" ngModel name="date" matInput placeholder="date" #passwordInput="ngModel" required password>
+            <mat-error *ngIf="passwordInput.invalid">Indicate date</mat-error>
+        </mat-form-field>
+        <button mat-raised-button color="accent" type="submit" required>Signup</button>
+
+    </form>
+
+</mat-card>

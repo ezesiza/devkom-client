@@ -1,0 +1,9 @@
+.nav-spacer {
+    flex: 1 1 auto;
+}
+
+.devs .nav-link {
+    display: flex;
+    align-self: center;
+    justify-content: center;
+}

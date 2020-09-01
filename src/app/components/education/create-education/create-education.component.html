@@ -1,0 +1,42 @@
+<br>
+
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+<div>
+    <form (submit)="onSignup(signupForm)" #signupForm="ngForm" *ngIf="!isLoading">
+        <mat-card>
+            <mat-form-field>
+                <input matInput name="school" ngModel type="text" placeholder="School" #schoolInput="ngModel" required school>
+                <mat-error *ngIf="schoolInput.invalid">Please enter School Name</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput name="degree" ngModel type="degree" placeholder="Degree" #degreeInput="ngModel" required degree>
+                <mat-error *ngIf="degreeInput.invalid">Please enter a valid degree</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input ngModel name="fieldofstudy" matInput placeholder="Field of Study" #fieldofstudyInput="ngModel" required fieldofstudy>
+                <mat-error *ngIf="fieldofstudyInput.invalid">Please enter Field of Study</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input type="date" ngModel name="from" matInput placeholder="From" #fromInput="ngModel" required from>
+                <mat-error *ngIf="fromInput.invalid">Please enter from</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input  [disabled]="changeCurrent" type="date" ngModel name="to" matInput placeholder="To" #toInput="ngModel" required to>
+                <mat-error *ngIf="toInput.invalid">Please enter to</mat-error>
+            </mat-form-field>  <mat-form-field>
+                <mat-label>Tell us about your School</mat-label>
+                <textarea ngModel name="description" matInput placeholder="description" #descriptionInput="ngModel" required description></textarea>
+                <mat-error *ngIf="descriptionInput.invalid">Indicate School description</mat-error>
+            </mat-form-field>
+            <section class="example-section">
+                <mat-checkbox class="example-margin" (click)="toggleCurrent()">Current School</mat-checkbox>
+              </section>
+          
+            <br/>
+            <br/>
+            <button mat-raised-button color="accent" type="submit" required *ngIf="!isLoading">Save & Exit</button>
+        </mat-card>
+    </form> 
+    <br>
+</div>

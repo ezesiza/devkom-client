@@ -1,0 +1,105 @@
+<div class="header">
+  <h1>Dashboard</h1>
+
+<p>Welcome This is your Dashboard</p>
+</div>
+
+<mat-card>
+  
+<i class="material-icons md-48"></i>
+<div class="btn-group mb-4" role="group">
+    <button mat-flat-button color="accent"  *ngIf="!hasProfile">
+    <a routerLink="/createprofile" class="btn btn-light">
+      <i class="material-icons md-48">account_circle </i>Create Profile
+    </a>
+  </button>
+    <button mat-flat-button color="warn" >
+    <a routerLink="/add-experience" class="btn btn-light">
+      <i class="material-icons md-48">work
+      </i>Add Experience
+    </a>
+  </button>
+    <button mat-flat-button color="primary" >
+    <a routerLink="/add-education" class="btn btn-light">
+      <i class="material-icons md-48">
+        school</i> Add Education
+    </a>
+  </button>
+    <button mat-flat-button color="accent" *ngIf="hasProfile">
+    <a routerLink="/editprofile" class="btn btn-light">
+      <i class="material-icons md-48">account_circle </i>Edit Profile
+    </a>
+  </button>
+</div>
+
+<h1>Education</h1>
+
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="company">
+        <th mat-header-cell *matHeaderCellDef> Institution </th>
+        <td mat-cell *matCellDef="let element">
+            {{element.school}}
+        </td>
+
+    </ng-container>
+    <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef> Degree </th>
+        <td mat-cell *matCellDef="let element">
+            {{element.degree}}</td>
+    </ng-container>
+    <ng-container matColumnDef="years">
+        <th mat-header-cell *matHeaderCellDef> Year </th>
+        <td mat-cell *matCellDef="let element">
+            {{element.from}} - {{element.to}}
+    </ng-container>
+    <ng-container matColumnDef="delete">
+        <th mat-header-cell *matHeaderCellDef>  </th>
+        <td mat-cell *matCellDef="let element">
+            <button mat-flat-button color="warn">
+             Delete</button>
+        </td>
+    </ng-container>
+   
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+</table>
+<br>
+
+<h1>Experience</h1>
+
+<table mat-table [dataSource]="dataSource2" class="mat-elevation-z8">
+    <ng-container matColumnDef="company">
+        <th mat-header-cell *matHeaderCellDef> Company </th>
+        <td mat-cell *matCellDef="let element">
+            {{element.company}}
+        </td>
+
+    </ng-container>
+    <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef> Title </th>
+        <td mat-cell *matCellDef="let element">
+            {{element.title}}</td>
+    </ng-container>
+    <ng-container matColumnDef="years">
+        <th mat-header-cell *matHeaderCellDef> Year </th>
+        <td mat-cell *matCellDef="let element">
+            {{element.from}} - {{element.to}}
+        </td>
+   
+      </ng-container>
+      <ng-container matColumnDef="delete">
+        <th mat-header-cell *matHeaderCellDef>  </th>
+        <td mat-cell *matCellDef="let element">
+            <button mat-flat-button color="warn">
+             Delete</button>
+        </td>
+    </ng-container>
+ 
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <button class="delete" mat-flat-button color="warn">Delete my Account</button>
+</mat-card>
+

@@ -1,0 +1,24 @@
+<mat-toolbar color="primary">
+
+    <span><a class="navbar-brand" mat-raised-button [routerLink]="['']" routerLinkActive="active" color="primary">
+      DevKomm</a></span>
+    <span class="nav-spacer"></span>
+    <span flex></span>
+    <div class="devs">
+        <a class="nav-link" mat-raised-button [routerLink]="['profiles']" routerLinkActive="active">
+      View Developers
+    </a>
+    </div>
+
+    <button mat-button *ngIf='userIsAuthenticated'>
+    <a mat-raised-button color="primary" (click)='onLogout()'>Logout</a>
+  </button>
+    <span *ngIf='userIsAuthenticated'>
+    <a mat-raised-button routerLink="dashboard" color="primary">Welcome!{{ ' ' + ' ' +getCurrentUser()}}</a>
+  </span>
+    <button mat-button routerLink="signup" *ngIf='!userIsAuthenticated'>
+    <span>Signup</span> </button>
+    <button mat-button routerLink="login" *ngIf='!userIsAuthenticated'>Login</button>
+
+
+</mat-toolbar>

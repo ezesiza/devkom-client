@@ -1,0 +1,20 @@
+mat-card {
+    margin: 0 auto;
+    width: 80%;
+    margin: auto;
+    align-content: center;
+    justify-content: center;
+}
+
+.mat-list .mat-list-item.right .mat-list-item-content {
+    justify-content: flex-end;
+}
+
+.img {
+    justify-content: left;
+}
+
+h1,
+h3 {
+    text-align: center;
+}
