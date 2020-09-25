@@ -8,5 +8,9 @@ export interface ProfileData {
   githubusername: string;
   bio: string;
   status?: string;
-  social: string;
+  social: string[];
+}
+
+export interface FoundProfile{
+  data: ProfileData
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { ProfileService } from '../profile.service';
-import { Profile } from './profile.model';
+import { ProfileData } from '../profile.model';
 const OPTIONS = [
   { label: '* Select Professional Status', value: '0' },
   { label: 'Developer', value: 'Developer' },
@@ -24,7 +24,7 @@ const OPTIONS = [
 export class EditProfileComponent implements OnInit {
 
   options = [...OPTIONS];
-  profile: Profile = {
+  profile: ProfileData = {
     handle: '',
     company: '',
     website: '',
@@ -42,7 +42,7 @@ export class EditProfileComponent implements OnInit {
   ngOnInit() {
     const userId = JSON.parse(localStorage.getItem('userId'));
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
-      this.profileService.getProfileByUserId(parseInt(userId, 10)).subscribe((data: Profile) => {
+      this.profileService.getProfileByUserId(parseInt(userId, 10)).subscribe((data: ProfileData) => {
         console.log(data);
         this.profile={
           handle: data.handle,

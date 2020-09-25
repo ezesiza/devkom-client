@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { Profile } from '../profile/edit-profile/profile.model';
+import { ProfileData } from '../profile/profile.model';
 import { ProfileService } from '../profile/profile.service';
 
 @Component({
@@ -8,13 +8,13 @@ import { ProfileService } from '../profile/profile.service';
 })
 export class ProfilesComponent implements OnInit {
   loading: true;
-  profiles: Profile[] = [];
-  constructor(private profileService:ProfileService) {}
+  profiles: ProfileData[] = [];
+  constructor(private profileService: ProfileService) {}
 
   ngOnInit() {
-    this.profileService.getAllProfiles().subscribe((profile: Profile[]) => {
+    this.profileService.getAllProfiles().subscribe((profile: ProfileData[]) => {
       console.log(profile);
-      this.profiles = [...profile['foundProfile']]
+      this.profiles = profile['foundProfile']
     })
   }
 }
