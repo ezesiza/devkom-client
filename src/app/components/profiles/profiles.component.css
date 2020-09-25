@@ -6,6 +6,7 @@ mat-card {
     justify-content: center;
 }
 
+
 .mat-list .mat-list-item.right .mat-list-item-content {
     justify-content: flex-end;
 }

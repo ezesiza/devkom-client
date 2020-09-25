@@ -5,7 +5,7 @@ export interface Profile {
     location: string;
     status: string;
     skills: string[];
-    user?: string;
+    // user?: string;
     githubusername: string;
     bio: string;
     social: string[];

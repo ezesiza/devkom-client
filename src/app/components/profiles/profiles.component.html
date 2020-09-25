@@ -3,50 +3,34 @@
     <h1>Developer Profiles </h1>
     <h3>Browse and connect with developers</h3>
 </div>
-<mat-card>
-    <div className="col-2">
-        <mat-icon>
-            <i class="material-icons md-64">face</i>
-        </mat-icon>
-    </div>
-    <mat-grid-list cols="2" rowHeight="2:1">
-        <mat-grid-tile> <button mat-raised-button color="accent" type="submit" required>View Profile</button>
-        </mat-grid-tile>
-        <mat-grid-tile>
-            <mat-list role="list">
-                <mat-divider></mat-divider>
-                <mat-list-item role="listitem">Media Prints
-                </mat-list-item>
-                <mat-divider></mat-divider>
-                <mat-list-item role="listitem">Digital Impression</mat-list-item>
-                <mat-divider></mat-divider>
-                <mat-list-item role="listitem">High Latency Visualization</mat-list-item>
-                <mat-divider></mat-divider>
-            </mat-list>
-        </mat-grid-tile>
-    </mat-grid-list>
-</mat-card>
-<br>
-<mat-card>
-    <div className="col-2">
-        <mat-icon>
-            <i class="material-icons md-64">face</i>
-        </mat-icon>
-    </div>
-    <mat-grid-list cols="2" rowHeight="2:1">
-        <mat-grid-tile> <button mat-raised-button color="accent" type="submit" required>View Profile</button>
-        </mat-grid-tile>
-        <mat-grid-tile>
-            <mat-list role="list">
-                <mat-divider></mat-divider>
-                <mat-list-item role="listitem">Media Prints
-                </mat-list-item>
-                <mat-divider></mat-divider>
-                <mat-list-item role="listitem">Digital Impression</mat-list-item>
-                <mat-divider></mat-divider>
-                <mat-list-item role="listitem">High Latency Visualization</mat-list-item>
-                <mat-divider></mat-divider>
-            </mat-list>
-        </mat-grid-tile>
-    </mat-grid-list>
-</mat-card>
+
+<div *ngFor="let post of profiles">
+    <mat-card >
+        <div className="col-2">
+            <mat-icon>
+                <i class="material-icons md-64">face</i>
+            </mat-icon>
+            <h1>{{post.handle}}</h1>
+        </div>
+        <mat-grid-list cols="2" rowHeight="2:1">
+            <mat-grid-tile> <button [routerLink]="['/dashboard/']"  
+                mat-raised-button color="accent" type="button" >
+                  
+                View Profile</button>
+            </mat-grid-tile>
+            <mat-grid-tile *ngFor="let skill of post.skills">
+                <mat-list role="list">
+                    <mat-divider></mat-divider>
+                    <mat-list-item role="listitem">{{skill}}
+                    </mat-list-item>
+                    <mat-divider></mat-divider>
+                    <mat-list-item role="listitem">{{post.company}}
+                    </mat-list-item>
+                    <mat-divider></mat-divider>
+                </mat-list>
+            </mat-grid-tile>
+        </mat-grid-list>
+        <br />
+    </mat-card>
+    <br>
+</div>
