@@ -26,7 +26,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path: 'editprofile',
+    path: 'editprofile/:handle',
     component: EditProfileComponent,
     canActivate: [AuthGuard],
   },

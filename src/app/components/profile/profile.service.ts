@@ -49,6 +49,10 @@ export class ProfileService {
     return this.http.get<{}>('http://localhost:3002/auth/user');
   }
 
+  getProfileByUserId(id: number) {
+    return this.http.get<{}>('http://localhost:3002/profile/profile-user/user/' + id);
+  }
+
   private getAuthData() {
     const token = localStorage.getItem('token');
     const userId = localStorage.getItem('userId');

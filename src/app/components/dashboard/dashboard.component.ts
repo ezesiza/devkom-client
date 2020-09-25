@@ -45,6 +45,7 @@ export class DashboardComponent implements OnInit {
   public eduList = [];
   public myedu = [];
   public myexp = [];
+  handle: string;
 
   dataSource = [];
   dataSource2 = [];
@@ -57,13 +58,22 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.userNowId = JSON.parse(localStorage.getItem('userId'));
-    this.profileService.getAllProfiles().subscribe((data) => {
-      this.profileUser = data['foundProfile'].find((item) => {
-        
-        return item.userId === this.userNowId
-      });
-      console.log(this.profileUser),
-      (this.profileUser && (this.userNowId === this.profileUser['userId']))
+
+    // this.profileService.getAllProfiles().subscribe((data) => {
+    //   console.log('allProfiles', data)
+    //   this.profileUser = data['foundProfile'].find((item) => {
+    //     return item.userId === this.userNowId;
+    //   });
+    //   console.log('prouser', this.profileUser),
+    //   (this.profileUser && (this.userNowId === this.profileUser['userId']))
+    //   ? (this.hasProfile = true)
+    //   : (this.hasProfile = false);
+    // });
+    const userId = parseInt(this.userNowId)
+
+    this.profileService.getProfileByUserId(userId).subscribe(data=>{
+      console.log(data);
+      (Object.keys(data).length > 0 )
       ? (this.hasProfile = true)
       : (this.hasProfile = false);
     });
@@ -71,13 +81,13 @@ export class DashboardComponent implements OnInit {
     this.educationService.getAllEducation().subscribe((data: []) => {
        this.myedu =  data.filter((item: any) => item.userId === this.userNowId);
        this.dataSource = [...this.myedu];
-       console.log(this.dataSource);
+      //  console.log(this.dataSource);
       });
 
     this.experienceService.getAllExperience().subscribe((data: []) => {
       this.myexp =  data.filter((item: any) => item.user.id === this.userNowId);
       this.dataSource2 = [...this.myexp];
-      console.log(this.dataSource2);
+      // console.log(this.dataSource2);
       });
   }
 }
