@@ -26,7 +26,7 @@
     </a>
   </button>
     <button mat-flat-button color="accent" *ngIf="hasProfile">
-    <a routerLink="/editprofile/handle" class="btn btn-light">
+    <a [routerLink]="['/editprofile/', handle]"  class="btn btn-light">
       <i class="material-icons md-48">account_circle </i>Edit Profile
     </a>
   </button>

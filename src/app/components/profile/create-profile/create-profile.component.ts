@@ -25,7 +25,6 @@ export class CreateProfileComponent implements OnInit {
   isLoading = false;
   options = [...OPTIONS];
   public changeView: boolean;
-  public hasProfile: boolean;
   currentUser: {};
 
   constructor(
@@ -46,7 +45,6 @@ export class CreateProfileComponent implements OnInit {
     if (form.invalid) {
       return;
     }
-    this.isLoading = true;
 
     const profileData: ProfileData = {
       handle: form.value.handle,
@@ -60,6 +58,7 @@ export class CreateProfileComponent implements OnInit {
       bio: form.value.bio,
       social: form.value.social,
     };
+
     // this.authService.registerUser(
     //   form.value.name,
     //   form.value.email,
@@ -67,7 +66,7 @@ export class CreateProfileComponent implements OnInit {
     //   form.value.avatar,
     //   form.value.date,
     // );
-    //this.store.dispatch(new authAction.RegisterUser());
+    // this.store.dispatch(new authAction.RegisterUser());
     // console.log(profileData)
 
     this.profileService.createProfile(profileData).subscribe((data) => {

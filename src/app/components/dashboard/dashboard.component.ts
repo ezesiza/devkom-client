@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EducationService } from '../education/education.service';
 import { ExperienceService } from '../experience/experience.service';
+import { Profile } from '../profile/edit-profile/profile.model';
 import { ProfileService } from '../profile/profile.service';
 const experience = [
   { company: 'Izu Trans Corps', title: 'Logistics', years: '2020' },
@@ -41,14 +42,15 @@ export class DashboardComponent implements OnInit {
 
   public hasProfile: boolean;
   userNowId: string;
-  profileUser: object;
+  profileUser: any;
   public eduList = [];
   public myedu = [];
   public myexp = [];
-  handle: string;
+
 
   dataSource = [];
   dataSource2 = [];
+  public handle = '';
 
   constructor(
     public profileService: ProfileService,
@@ -71,11 +73,14 @@ export class DashboardComponent implements OnInit {
     // });
     const userId = parseInt(this.userNowId)
 
-    this.profileService.getProfileByUserId(userId).subscribe(data=>{
-      console.log(data);
-      (Object.keys(data).length > 0 )
+    this.profileService.getProfileByUserId(userId).subscribe((data:Profile)=>{
+      (data !== null )
       ? (this.hasProfile = true)
       : (this.hasProfile = false);
+      if (data !== null) { 
+        this.handle = data.handle;
+        console.log(this.handle);
+      }
     });
 
     this.educationService.getAllEducation().subscribe((data: []) => {

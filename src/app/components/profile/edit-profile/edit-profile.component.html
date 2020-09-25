@@ -1,1 +1,87 @@
-<p>edit-profile works!</p>
+<br>
+
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+<div>
+    <form (submit)="onSignup(signupForm)" #signupForm="ngForm" *ngIf="!isLoading">
+        <mat-card>
+            <mat-form-field>
+                <mat-label>Select skills</mat-label>
+                <mat-select name="skills" type="text"  [(value)]="profile.skills" required skills> 
+                    <mat-option *ngFor="let item of options" [value]="item.value">{{item.label}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput name="handle" type="text" placeholder="Handle" [(ngModel)]="profile.handle" required handle>
+                <mat-error >Please enter a User handle</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput name="company"type="company" placeholder="Company" [(ngModel)]="profile.company" required company>
+                <mat-error >Please enter a valid company</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input  name="website" matInput placeholder="Website" [(ngModel)]="profile.website" required website>
+                <mat-error >Please enter website</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input type="location"  name="location" matInput placeholder="Location" [(ngModel)]="profile.location" required location>
+                <mat-error >Please enter location</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input type="githubusername"  name="githubusername" matInput placeholder="Github Url" [(ngModel)]="profile.githubusername" required githubusername>
+                <img src="https://img.icons8.com/material/24/000000/github.png" />
+                <mat-error >Indicate github url</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Tell us about your self</mat-label>
+                <textarea name="bio" matInput placeholder="Bio" [(ngModel)]="profile.bio"required bio></textarea>
+                <mat-error >Indicate Bio</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input type="text"  name="status" matInput placeholder="Status" [(ngModel)]="profile.status" required status>
+                <mat-error >Please enter status</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input type="social" matInput name="social"  placeholder="Social Url" [(ngModel)]="profile.social" required social>
+                <img src="https://img.icons8.com/material/24/000000/safety-collection-place.png" />
+                <mat-error >Indicate social</mat-error>
+            </mat-form-field>
+            <button (click)="toggleDisplay()" type="button" mat-flat-button color="accent">
+        Add Social Links
+      </button> Optional
+        </mat-card>
+       
+        <mat-card>
+            <div *ngIf="changeView">
+                <mat-form-field>
+                    <input type="twitter" ngModel name="twitter" matInput placeholder="Twitter" #twitterInput="ngModel" required twitter>
+                    <img src="https://img.icons8.com/material/24/000000/twitter--v1.png" />
+                    <mat-error *ngIf="twitterInput.invalid">Indicate url to your twitter account</mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <input type="facebook" ngModel name="facebook" matInput placeholder="Facebook" #facebookInput="ngModel" required facebook>
+                    <img src="https://img.icons8.com/material/24/000000/facebook-new.png" />
+                    <mat-error *ngIf="facebookInput.invalid">Indicate url to your facebook</mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <input type="linkedin" ngModel name="linkedin" matInput placeholder="Linkedin" #linkedinInput="ngModel" required linkedin>
+                    <img src="https://img.icons8.com/material/24/000000/linkedin--v1.png" />
+                    <mat-error *ngIf="linkedinInput.invalid">Indicate url to your linkedin account</mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <input type="youtube" ngModel name="youtube" matInput placeholder="Youtube" #youtubeInput="ngModel" required youtube>
+                    <img src="https://img.icons8.com/material/24/000000/youtube--v2.png" />
+                    <mat-error *ngIf="youtubeInput.invalid">Indicate url to your youtube account</mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <input type="instagram" ngModel name="instagram" matInput placeholder="Instagram" #instagramInput="ngModel" required instagram>
+                    <img src="https://img.icons8.com/material/24/000000/instagram-new--v1.png" />
+                    <mat-error *ngIf="instagramInput.invalid">Indicate url to your instagram account</mat-error>
+                </mat-form-field>
+            </div>
+
+            <button mat-raised-button color="accent" type="submit" required *ngIf="!isLoading">Save & Exit</button>
+        </mat-card>
+    </form>
+    <br>
+</div>
